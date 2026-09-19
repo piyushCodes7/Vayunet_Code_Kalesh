@@ -108,16 +108,28 @@ export default function DetailSidePanel({
       <div className="p-5 border-b border-slate-200 flex items-start justify-between gap-4 bg-slate-50">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-200 text-slate-700">
-              {entity?.type ? entity.type.toUpperCase() : 'LOCATION'}
+            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+              {entity?.entity_type === 'street_corridor'
+                ? 'STREET ROAD CORRIDOR'
+                : entity?.entity_type === 'street_spot'
+                ? 'STREET JUNCTION / SPOT'
+                : entity?.type ? entity.type.toUpperCase() : 'LOCATION'}
             </span>
-            <span className="text-xs text-slate-500">
-              {entity?.lat?.toFixed(4)}°N, {entity?.lng?.toFixed(4)}°E
-            </span>
+            {entity?.lat && entity?.lng && (
+              <span className="text-xs text-slate-500 font-mono">
+                {entity.lat.toFixed(4)}°N, {entity.lng.toFixed(4)}°E
+              </span>
+            )}
           </div>
           <h2 className="text-lg font-bold text-slate-900 tracking-tight leading-snug">
             {entity?.name || 'Selected Location'}
           </h2>
+          {entity?.street && (
+            <div className="text-xs text-slate-500 mt-1 flex items-center gap-1 font-medium">
+              <span>📍</span>
+              <span>{entity.street}</span>
+            </div>
+          )}
         </div>
 
         <button
@@ -130,6 +142,57 @@ export default function DetailSidePanel({
 
       {/* Scrollable Body */}
       <div className="flex-1 overflow-y-auto p-5 space-y-5">
+        
+        {/* Street-to-Street Road Profile (when inspecting a street or junction) */}
+        {(entity?.characteristic || entity?.pedestrianAdvice || entity?.driverAdvice || entity?.traffic || entity?.advice) && (
+          <div className="bg-blue-50/70 rounded-2xl p-4 border border-blue-200 space-y-3 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <span className="text-sm">🛣️</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-950">
+                  Street-to-Street Road Guide
+                </span>
+              </div>
+              {entity?.traffic && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-200/80 text-blue-900">
+                  {entity.traffic}
+                </span>
+              )}
+            </div>
+
+            {entity?.characteristic && (
+              <p className="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-blue-100 shadow-2xs">
+                {entity.characteristic}
+              </p>
+            )}
+
+            <div className="grid grid-cols-1 gap-2 pt-0.5">
+              {(entity?.pedestrianAdvice || entity?.advice) && (
+                <div className="p-3 rounded-xl bg-white border border-blue-100 flex items-start gap-2.5 shadow-2xs">
+                  <span className="text-base leading-none mt-0.5">🚶</span>
+                  <div className="text-xs">
+                    <div className="font-bold text-slate-900">Pedestrian / Walking Advice:</div>
+                    <div className="text-slate-700 text-[11px] mt-0.5 leading-relaxed">
+                      {entity.pedestrianAdvice || entity.advice}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {entity?.driverAdvice && (
+                <div className="p-3 rounded-xl bg-white border border-blue-100 flex items-start gap-2.5 shadow-2xs">
+                  <span className="text-base leading-none mt-0.5">🚗</span>
+                  <div className="text-xs">
+                    <div className="font-bold text-slate-900">Driver / Vehicle Advice:</div>
+                    <div className="text-slate-700 text-[11px] mt-0.5 leading-relaxed">
+                      {entity.driverAdvice}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
         
         {/* 1. AQI Scorecard & CPCB Category */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 border-l-4 shadow-sm" style={{ borderLeftColor: aqiDetails.color }}>

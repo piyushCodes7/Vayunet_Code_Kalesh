@@ -30,7 +30,7 @@ export default function SimpleCitizenView({ onExploreMap }) {
             onClick={onExploreMap}
             className="px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base shadow-lg shadow-emerald-600/20 transition-all flex items-center gap-2.5 active:scale-98"
           >
-            <span>Check City Map</span>
+            <span>Check Street Map</span>
             <ArrowRight className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>

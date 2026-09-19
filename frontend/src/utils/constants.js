@@ -1,5 +1,5 @@
 export const DELHI_CENTER = [28.6139, 77.2090];
-export const DEFAULT_ZOOM = 11;
+export const DEFAULT_ZOOM = 13;
 
 export const MAP_TILES = {
   dark: {
