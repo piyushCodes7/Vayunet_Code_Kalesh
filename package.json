@@ -1,0 +1,12 @@
+{
+  "name": "vayunet-micro-mapping",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Street-level air quality micro-mapping and automated AI health advisories (Code Kalam 2026)",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
+  }
+}
