@@ -4,51 +4,50 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans;
+    @apply bg-slate-50 text-slate-900 font-sans;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 }
 
-/* Custom modern scrollbars */
+/* Clean light scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94a3b8;
 }
 
-/* Leaflet Map Specific Styling */
+/* Leaflet Map Specific Styling - Clean Light Theme */
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background: #090d16 !important;
+  background: #f8fafc !important;
   font-family: inherit;
 }
 
 .leaflet-tile {
-  opacity: 0.92;
+  opacity: 1;
 }
 
-
 .leaflet-popup-content-wrapper {
-  background: #0f172a !important;
-  color: #f8fafc !important;
-  border: 1px solid #334155 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 0.75rem !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
   padding: 0 !important;
 }
 
@@ -58,28 +57,29 @@
 }
 
 .leaflet-popup-tip {
-  background: #0f172a !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
 }
 
-/* Glassmorphism helpers */
+/* Clean panel and card helpers */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(51, 65, 85, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e2e8f0;
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(71, 85, 105, 0.3);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* Pulsing beacon marker animations */
 @keyframes ring-pulse {
   0% {
     transform: scale(0.95);
-    opacity: 0.9;
+    opacity: 0.7;
   }
   70% {
     transform: scale(2.2);
@@ -98,3 +98,4 @@
   border-radius: 50%;
   animation: ring-pulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
 }
+

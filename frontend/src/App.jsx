@@ -109,7 +109,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
       {/* Top Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -122,9 +122,7 @@ export default function App() {
         onToggleLiveStreaming={() => setIsLiveStreaming((prev) => !prev)}
       />
 
-
-
-      {/* Pro Hero Banner & Stat Cards (Visible in Map & Specialized Modes) */}
+      {/* Hero Banner & Stat Cards (Visible in Map & Specialized Modes) */}
       {activeTab !== TABS.CITIZEN && (
         <>
           <HeroBanner
@@ -142,11 +140,10 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1 pb-16 space-y-4">
         
-        {/* Tab 0: SIMPLE CITIZEN VIEW (Clean, minimalist UI for unskilled/everyday people) */}
+        {/* Tab 0: SIMPLE CITIZEN VIEW */}
         {activeTab === TABS.CITIZEN && (
           <SimpleCitizenView onExploreMap={() => setActiveTab(TABS.OVERVIEW)} />
         )}
-
 
         {/* Tab 1: OVERVIEW & MAP */}
         {activeTab === TABS.OVERVIEW && (
@@ -204,10 +201,9 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 px-4 py-6 text-center text-xs text-slate-500 font-mono">
-
+      <footer className="border-t border-slate-200 bg-white px-4 py-6 text-center text-xs text-slate-500">
         <p>
-          VayuNet Air Quality Micro-Mapping · Code Kalam 2026 Envelope No. 76 · Indian CPCB NAQI Standards
+          VayuNet · Simple Street-Level Air Quality & Health Safety Guide · Delhi NCR
         </p>
       </footer>
     </div>
